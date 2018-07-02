@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["miniSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation rootProject.ext.dependence["appcompatV7"]
+    api rootProject.ext.dependence["retrofit"]
+    api rootProject.ext.dependence["retrofitAdapter"]
+    api rootProject.ext.dependence["retrofitConverter"]
+    api rootProject.ext.dependence["rxJavaAdapter"]
+    api rootProject.ext.dependence["gsonConverter"]
+    api rootProject.ext.dependence["logIntercepter"]
+    api rootProject.ext.dependence["rxjava"]
+    api rootProject.ext.dependence["rxAndroid"]
+
+    testImplementation rootProject.ext.dependence["JUnit"]
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
+}

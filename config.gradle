@@ -1,0 +1,45 @@
+ext {
+    android = [
+            compileSdkVersion : 26,
+            targetSdkVersion  : 26,
+            miniSdkVersion    : 19,
+            buildeToolsVersion: 23,
+            versionCode       : 100,
+            versionName       : "1.0.0"
+    ]
+
+    version = [
+            androidSupportSdkVersion: "26.1.0",
+            constrainctlayout       : "1.1.2",
+            retrofit                : "2.2.0",
+            loginInterceptor        : "3.6.0",
+            rxJava                  : "2.1.0",
+            rxAndroid               : "2.0.1",
+            JUnit                   : "4.12",
+            easyRecycleView         : "4.4.0",
+    ]
+
+    dependence = [
+            appcompatV7      : "com.android.support:appcompat-v7:${version["androidSupportSdkVersion"]}",
+
+            //test
+            JUnit            : "junit:junit:${version["JUnit"]}",
+
+            //view
+            recycleView      : "com.android.support:recyclerview-v7:${version["androidSupportSdkVersion"]}",
+            constrainctlayout: "com.android.support.constraint:constraint-layout:${version["constrainctlayout"]}",
+            easyRecycleView  : "com.jude:easyrecyclerview:${version["easyRecycleView"]}",
+
+            //http
+            retrofit         : "com.squareup.retrofit2:retrofit:${version["retrofit"]}",
+            retrofitAdapter  : "com.squareup.retrofit2:retrofit-adapters:${version["retrofit"]}",
+            retrofitConverter: "com.squareup.retrofit2:retrofit-converters:${version["retrofit"]}",
+            rxJavaAdapter    : "com.squareup.retrofit2:adapter-rxjava2:${version["retrofit"]}",
+            gsonConverter    : "com.squareup.retrofit2:converter-gson:${version["retrofit"]}",
+            logIntercepter   : "com.squareup.okhttp3:logging-interceptor:${version["loginInterceptor"]}",
+
+            //tools
+            rxjava           : "io.reactivex.rxjava2:rxjava:${version["rxJava"]}",
+            rxAndroid        : "io.reactivex.rxjava2:rxandroid:${version["rxAndroid"]}",
+    ]
+}
