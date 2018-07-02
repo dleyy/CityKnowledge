@@ -8,11 +8,14 @@ import android.util.Log
 import cityknowledge.cityknowledge.adapter.KnowledgeListAdapter
 import cityknowledge.cityknowledge.widget.CommonDialog
 import com.example.data.net.response.GetReadingListsResponse
+import com.example.domain.DefaultDisposable
+import com.example.domain.modle.Article
 import com.example.domain.useCase.GetReadingListUseCase
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,23 +36,35 @@ class MainActivity : AppCompatActivity() {
 
         val mapp = mapOf("key" to 24, "name" to "zhangsan", "age" to 25)
 
-        Log.e("haha", mapp["name"] as String)
-
-        getReadingListUseCase.execute(object : DisposableObserver<GetReadingListsResponse>() {
-            override fun onNext(t: GetReadingListsResponse) {
-                Log.e("haha",t.list[0].name+"\n"+t.list[0].toString())
-                Log.e("haha",t.message)
+        getReadingListUseCase.execute(object:DefaultDisposable<ArrayList<Article>>(){
+            override fun onError(e: Throwable) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
-
 
             override fun onComplete() {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
-            override fun onError(e: Throwable) {
-                Log.e("haha",e.message)
+            override fun onNext(t: ArrayList<Article>) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
         })
+
+//        getReadingListUseCase.execute(object : DisposableObserver<GetReadingListsResponse>() {
+//            override fun onNext(t: GetReadingListsResponse) {
+//                Log.e("haha",t.list[0].name+"\n"+t.list[0].toString())
+//                Log.e("haha",t.message)
+//            }
+//
+//            override fun onComplete() {
+//            }
+//
+//            override fun onError(e: Throwable) {
+//                Log.e("haha",e.message)
+//            }
+//
+//        })
     }
 
 
