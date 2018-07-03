@@ -13,20 +13,12 @@ import io.reactivex.functions.Function
 class DataRepositor {
     var dataManager: DataManager = DataManager()
 
-    fun getReadingLists(): Observable<GetReadingListsResponse> {
-        return dataManager.getReadingListsObservable()
+    fun getReadingList(): Observable<ArrayList<Article>> {
+        return dataManager.getReadingListsObservable().map { t ->
+            var list: ArrayList<Article> = ArrayList()
+            t.list.mapTo(list) { Article(it._id, it.name, it.en_name, it.rank) }
+            list
+        }
     }
 
-    fun getReadingList(): Observable<ArrayList<Article>> {
-        return dataManager.getReadingListsObservable().map(object :
-                Function<GetReadingListsResponse, ArrayList<Article>> {
-            override fun apply(t: GetReadingListsResponse): ArrayList<Article> {
-                var list: ArrayList<Article> = ArrayList()
-                for (re in t.list) {
-                    list.add(Article(re._id, re.name, re.en_name, re.rank))
-                }
-                return list
-            }
-        })
-    }
 }
