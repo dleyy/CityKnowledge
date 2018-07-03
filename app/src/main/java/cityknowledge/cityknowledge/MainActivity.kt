@@ -28,13 +28,6 @@ class MainActivity : AppCompatActivity() {
 
         my_recycle.adapter = recycleAdapter
 
-        var list: ArrayList<String> = ArrayList()
-        for (i in 1..5) {
-            list.add(i.toString())
-        }
-
-        val mapp = mapOf("key" to 24, "name" to "zhangsan", "age" to 25)
-
         getReadingListUseCase.execute(object : DefaultDisposable<ArrayList<Article>>() {
             override fun onError(e: Throwable) {
                 exceptionHandler.handleException(e)
@@ -46,7 +39,11 @@ class MainActivity : AppCompatActivity() {
             override fun onNext(t: ArrayList<Article>) {
                 recycleAdapter.setData(t)
             }
-
         })
+    }
+
+    override fun onDestroy() {
+        getReadingListUseCase.unSubscribe()
+        super.onDestroy()
     }
 }

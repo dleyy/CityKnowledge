@@ -31,7 +31,7 @@ class KnowledgeListAdapter(var context: Context) :
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         with(holder?.itemView!!) {
 
-            holder.textView.text = list[position].name + " " + list[position].enName
+            holder.textView.text = list[position].name
         }
     }
 
