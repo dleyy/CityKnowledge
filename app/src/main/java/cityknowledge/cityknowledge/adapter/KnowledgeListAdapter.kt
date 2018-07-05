@@ -6,14 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import cityknowledge.cityknowledge.R
 import com.example.domain.modle.Article
-import kotlinx.android.synthetic.main.view_knowledge_item.view.*
 
 /**
  * Created by lilei on 2018/6/27.
  */
-class KnowledgeListAdapter(var context: Context) :
+class KnowledgeListAdapter(var context: Context,
+                           var onClick:()->Unit) :
         RecyclerView.Adapter<KnowledgeListAdapter.ViewHolder>() {
 
     var list = ArrayList<Article>()
@@ -30,8 +31,12 @@ class KnowledgeListAdapter(var context: Context) :
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         with(holder?.itemView!!) {
-
             holder.textView.text = list[position].name
+            holder.textView.setOnClickListener {
+                Toast.makeText(context, list[position].name,
+                        Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
 

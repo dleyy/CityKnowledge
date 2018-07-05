@@ -17,9 +17,17 @@ ext {
             rxAndroid               : "2.0.1",
             JUnit                   : "4.12",
             easyRecycleView         : "4.4.0",
+            gradlePlugApt           : "1.8",
+            dragger2                : "2.2",
+            javaxAnnotation         : "1.0",
     ]
 
     dependence = [
+
+            //apt
+            draggerApt       : "com.google.dagger:dagger-compiler:${version["dragger2"]}",
+
+            //appcompat
             appcompatV7      : "com.android.support:appcompat-v7:${version["androidSupportSdkVersion"]}",
 
             //test
@@ -41,5 +49,10 @@ ext {
             //tools
             rxjava           : "io.reactivex.rxjava2:rxjava:${version["rxJava"]}",
             rxAndroid        : "io.reactivex.rxjava2:rxandroid:${version["rxAndroid"]}",
+            dragger2         : "com.google.dagger:dagger:${version["dragger2"]}",
+    ]
+
+    provider = [
+            javaxAnnotation: "javax.annotation:jsr250-api:${version["javaxAnnotation"]}",
     ]
 }

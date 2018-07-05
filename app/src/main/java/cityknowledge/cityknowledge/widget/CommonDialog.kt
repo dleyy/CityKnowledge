@@ -2,8 +2,6 @@ package cityknowledge.cityknowledge.widget
 
 import android.app.Dialog
 import android.content.Context
-import android.view.View
-import cityknowledge.cityknowledge.MainActivity
 
 /**
  * Created by lilei on 2018/6/26.

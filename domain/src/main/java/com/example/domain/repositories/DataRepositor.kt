@@ -11,14 +11,13 @@ import io.reactivex.functions.Function
  * Created by lilei on 2018/6/29.
  */
 class DataRepositor {
-    var dataManager: DataManager = DataManager()
+    private var dataManager: DataManager = DataManager()
 
     fun getReadingList(): Observable<ArrayList<Article>> {
         return dataManager.getReadingListsObservable().map { t ->
-            var list: ArrayList<Article> = ArrayList()
+            val list: ArrayList<Article> = ArrayList()
             t.list.mapTo(list) { Article(it._id, it.name, it.en_name, it.rank) }
             list
         }
     }
-
 }
