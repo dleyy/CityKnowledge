@@ -22,4 +22,8 @@
 
     </android.support.v7.widget.RecyclerView>
 
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width=""
+        android:layout_height=""></android.support.v7.widget.LinearLayoutCompat>
+    
 </android.support.constraint.ConstraintLayout>

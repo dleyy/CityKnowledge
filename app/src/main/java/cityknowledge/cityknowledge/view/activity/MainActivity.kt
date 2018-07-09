@@ -5,15 +5,17 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import cityknowledge.cityknowledge.R
 import cityknowledge.cityknowledge.adapter.KnowledgeListAdapter
+import cityknowledge.cityknowledge.mvp.contract.HomeContract
 import com.example.domain.DefaultDisposable
 import com.example.domain.Exception.ExceptionHandler
 import com.example.domain.modle.Article
 import com.example.domain.useCase.GetReadingListUseCase
 
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 import kotlin.collections.ArrayList
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity(),HomeContract.IHomeView {
 
     var getReadingListUseCase: GetReadingListUseCase = GetReadingListUseCase()
 
@@ -27,6 +29,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         my_recycle.layoutManager = LinearLayoutManager(this)
+
+        var number = listOf(11,2,3,4)
+        number = number.sortedDescending()
+        number.map { System.out.println(it.toString()) }
 
         my_recycle.adapter = recycleAdapter
         getReadingListUseCase.execute(object : DefaultDisposable<ArrayList<Article>>() {
@@ -43,8 +49,20 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    override fun showRank(list: ArrayList<Article>) {
+
+    }
+
+    override fun showLoadingDialog() {
+
+    }
+
+    override fun disMissLoadingDialog() {
+
+    }
+
     override fun onDestroy() {
-        getReadingListUseCase.unSubscribe()
+
         super.onDestroy()
     }
 }
