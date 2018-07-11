@@ -9,15 +9,17 @@ import com.example.domain.modle.Article
  */
 interface HomeContract {
     interface IHomeView : IView {
+
         fun showRank(list: ArrayList<Article>)
 
         fun showLoadingDialog()
 
         fun disMissLoadingDialog()
 
+        fun handleError(e:Throwable)
     }
 
-    interface IHomePresent : IPresent<IHomeView> {
-        fun destroyUseCase()
+    interface IHomePresent : IPresent {
+
     }
 }

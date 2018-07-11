@@ -36,7 +36,6 @@ class KnowledgeListAdapter(var context: Context,
                 Toast.makeText(context, list[position].name,
                         Toast.LENGTH_SHORT).show()
             }
-
         }
     }
 

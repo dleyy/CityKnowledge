@@ -12,21 +12,22 @@ import com.example.domain.modle.Article
 /**
  * Created by lilei on 2018/7/9.
  */
-class HomePresent: HomeContract.IHomePresent,BasePresent<HomeContract.IHomeView>() {
+open class HomePresent(var view: HomeContract.IHomeView)
+    : BasePresent(),HomeContract.IHomePresent {
 
-    val view:HomeContract.IHomeView = MainActivity()
-
-    val handler:ExceptionHandler = ExceptionHandler(MainActivity())
-
-    private val model:HomeModel = HomeModel(object:DefaultDisposable<ArrayList<Article>>(){
+    private val model: HomeModel = HomeModel(object : DefaultDisposable<ArrayList<Article>>() {
         override fun onNext(t: ArrayList<Article>) {
             view.showRank(t)
         }
 
         override fun onError(e: Throwable) {
-            handler.handleException(e)
+            view.handleError(e)
         }
     })
+
+    fun loadData() {
+        model.getQuestionList()
+    }
 
     override fun destroyUseCase() {
         model.destroyUseCase()

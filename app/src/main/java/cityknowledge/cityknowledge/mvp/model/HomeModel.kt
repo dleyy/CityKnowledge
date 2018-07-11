@@ -9,9 +9,7 @@ import com.example.domain.useCase.GetReadingListUseCase
  */
 class HomeModel(var disposable: DefaultDisposable<ArrayList<Article>>) : BaseModel() {
 
-    private val getQuestionListUseCase: GetReadingListUseCase by lazy {
-        GetReadingListUseCase()
-    }
+    private val getQuestionListUseCase: GetReadingListUseCase = GetReadingListUseCase()
 
     fun getQuestionList() {
         getQuestionListUseCase.execute(disposable)
