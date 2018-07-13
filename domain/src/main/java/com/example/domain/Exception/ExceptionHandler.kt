@@ -1,6 +1,7 @@
 package com.example.domain.Exception
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import com.example.domain.R
 import java.net.ConnectException
@@ -11,10 +12,12 @@ import java.net.UnknownHostException
  * Created by lilei on 2018/7/2.
  */
 class ExceptionHandler(var context: Context) {
+    val TAG:String = "Net Error"
     var code: String = ""
     var message: String = ""
 
     fun handleException(e: Throwable) {
+        Log.e(TAG,e.message)
         when (e) {
             is SocketTimeoutException -> {
                 toastMessage(context.getString(R.string.socket_time_out))

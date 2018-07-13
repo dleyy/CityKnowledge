@@ -28,5 +28,14 @@ open class GetReadingListsResponse : BaseResponse() {
 
         @SerializedName("rank")
         var rank: String = ""
+
+        @SerializedName("created_at")
+        var createdAt:String = ""
+
+        var icon:String = ""
+
+        var id:String = ""
+
+        var title = ""
     }
 }

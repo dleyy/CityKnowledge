@@ -12,11 +12,6 @@ interface HomeContract {
 
         fun showRank(list: ArrayList<Article>)
 
-        fun showLoadingDialog()
-
-        fun disMissLoadingDialog()
-
-        fun handleError(e:Throwable)
     }
 
     interface IHomePresent : IPresent {

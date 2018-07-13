@@ -5,4 +5,10 @@ package cityknowledge.cityknowledge.mvp
  */
 interface IView {
 
+    fun showLoadingDialog()
+
+    fun disMissLoadingDialog()
+
+    fun handleError(e: Throwable)
+
 }

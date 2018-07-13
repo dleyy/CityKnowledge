@@ -14,7 +14,7 @@ import com.example.domain.modle.Article
  * Created by lilei on 2018/6/27.
  */
 class KnowledgeListAdapter(var context: Context,
-                           var onClick:()->Unit) :
+                           var onClick:(con:Article)->Unit) :
         RecyclerView.Adapter<KnowledgeListAdapter.ViewHolder>() {
 
     var list = ArrayList<Article>()
@@ -33,8 +33,7 @@ class KnowledgeListAdapter(var context: Context,
         with(holder?.itemView!!) {
             holder.textView.text = list[position].name
             holder.textView.setOnClickListener {
-                Toast.makeText(context, list[position].name,
-                        Toast.LENGTH_SHORT).show()
+                onClick(list[position])
             }
         }
     }
@@ -50,6 +49,11 @@ class KnowledgeListAdapter(var context: Context,
 
     fun addData(list: ArrayList<Article>) {
         this.list.addAll(list)
+        notifyDataSetChanged()
+    }
+
+    fun cleanAllData(){
+        this.list.clear()
         notifyDataSetChanged()
     }
 }

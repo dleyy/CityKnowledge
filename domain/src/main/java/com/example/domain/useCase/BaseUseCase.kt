@@ -1,10 +1,10 @@
 package com.example.domain.useCase
 
+import com.example.domain.DefaultDisposable
 import com.example.domain.repositories.DataRepositor
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 
 /**
@@ -18,7 +18,7 @@ abstract class BaseUseCase<T> {
 
     abstract fun getBuildObservable(): Observable<T>
 
-    fun execute(observer: DisposableObserver<T>) {
+    fun execute(observer: DefaultDisposable<T>) {
         compositedisable.add(observer)
         getBuildObservable().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

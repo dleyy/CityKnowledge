@@ -1,29 +1,37 @@
 package cityknowledge.cityknowledge.mvp.present
 
-import cityknowledge.cityknowledge.mvp.IPresent
-import cityknowledge.cityknowledge.mvp.IView
 import cityknowledge.cityknowledge.mvp.contract.HomeContract
 import cityknowledge.cityknowledge.mvp.model.HomeModel
-import cityknowledge.cityknowledge.view.activity.MainActivity
 import com.example.domain.DefaultDisposable
-import com.example.domain.Exception.ExceptionHandler
 import com.example.domain.modle.Article
+import com.example.domain.useCase.GetReadingListUseCase
+import kotlin.properties.Delegates
 
 /**
  * Created by lilei on 2018/7/9.
  */
 open class HomePresent(var view: HomeContract.IHomeView)
-    : BasePresent(),HomeContract.IHomePresent {
+    : BasePresent(), HomeContract.IHomePresent {
 
-    private val model: HomeModel = HomeModel(object : DefaultDisposable<ArrayList<Article>>() {
-        override fun onNext(t: ArrayList<Article>) {
-            view.showRank(t)
+    val model: HomeModel by lazy { HomeModel() }
+
+    init {
+
+        model.useCase = GetReadingListUseCase()
+
+        model.disposable = object : DefaultDisposable<ArrayList<Article>>() {
+            override fun onNext(t: ArrayList<Article>) {
+                view.showRank(t)
+                view.disMissLoadingDialog()
+            }
+
+            override fun onError(e: Throwable) {
+                view.handleError(e)
+                view.disMissLoadingDialog()
+            }
         }
 
-        override fun onError(e: Throwable) {
-            view.handleError(e)
-        }
-    })
+    }
 
     fun loadData() {
         model.getQuestionList()

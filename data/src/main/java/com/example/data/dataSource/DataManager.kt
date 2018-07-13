@@ -1,6 +1,7 @@
 package com.example.data.dataSource
 
 import com.example.data.net.ApiService
+import com.example.data.net.request.GetReadingListRequest
 import com.example.data.net.response.GetReadingListsResponse
 import com.google.gson.Gson
 import io.reactivex.Observable
@@ -43,8 +44,12 @@ class DataManager {
         return builder
     }
 
-    fun getReadingListsObservable(): Observable<GetReadingListsResponse> {
-        return apiServices.testBaiduInterface()
+    fun getReadingListsObservable(request: GetReadingListRequest): Observable<GetReadingListsResponse> {
+        return apiServices.getRankList()
+    }
+
+    fun getItemDetailObservable(request: GetReadingListRequest): Observable<GetReadingListsResponse> {
+        return apiServices.getItemRank(request.enName)
     }
 
 }

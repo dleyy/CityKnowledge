@@ -7,15 +7,10 @@ import com.example.domain.useCase.GetReadingListUseCase
 /**
  * Created by lilei on 2018/7/9.
  */
-class HomeModel(var disposable: DefaultDisposable<ArrayList<Article>>) : BaseModel() {
-
-    private val getQuestionListUseCase: GetReadingListUseCase = GetReadingListUseCase()
+class HomeModel : BaseModel<ArrayList<Article>>() {
 
     fun getQuestionList() {
-        getQuestionListUseCase.execute(disposable)
+        useCase?.execute(disposable)
     }
 
-    override fun destroyUseCase() {
-        getQuestionListUseCase.unSubscribe()
-    }
 }
