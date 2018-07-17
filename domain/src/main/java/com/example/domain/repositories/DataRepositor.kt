@@ -2,10 +2,12 @@ package com.example.domain.repositories
 
 import com.example.data.dataSource.DataManager
 import com.example.data.net.request.GetReadingListRequest
+import com.example.data.net.request.GetXianDuDetailInfoRequest
 import com.example.data.net.response.GetReadingListsResponse
 import com.example.data.response.BaseResponse
 import com.example.domain.modle.Article
 import com.example.domain.modle.ItemDetailRank
+import com.example.domain.modle.XianDuDetailInfo
 import io.reactivex.Observable
 import io.reactivex.functions.Function
 
@@ -29,6 +31,17 @@ class DataRepositor {
             t.list.mapTo(list) {
                 ItemDetailRank(it.createdAt, it.icon,
                         it.id, it.title)
+            }
+            list
+        }
+    }
+
+    fun getXianDuDetailInfo(request: GetXianDuDetailInfoRequest): Observable<ArrayList<XianDuDetailInfo>> {
+        return dataManager.getXianDuDetailInfoObservable(request).map { t ->
+            var list = ArrayList<XianDuDetailInfo>()
+            t.result.mapTo(list) {
+                XianDuDetailInfo(
+                        it.cover ?: it.site.icon, it.title, it.url)
             }
             list
         }

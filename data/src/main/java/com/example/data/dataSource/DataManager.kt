@@ -2,7 +2,9 @@ package com.example.data.dataSource
 
 import com.example.data.net.ApiService
 import com.example.data.net.request.GetReadingListRequest
+import com.example.data.net.request.GetXianDuDetailInfoRequest
 import com.example.data.net.response.GetReadingListsResponse
+import com.example.data.net.response.GetXianDuDetailInfoResponse
 import com.google.gson.Gson
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
@@ -50,6 +52,11 @@ class DataManager {
 
     fun getItemDetailObservable(request: GetReadingListRequest): Observable<GetReadingListsResponse> {
         return apiServices.getItemRank(request.enName)
+    }
+
+    fun getXianDuDetailInfoObservable(request: GetXianDuDetailInfoRequest):
+            Observable<GetXianDuDetailInfoResponse> {
+        return apiServices.getXianDuDetailInfo(request.app_id, request.count, request.page)
     }
 
 }

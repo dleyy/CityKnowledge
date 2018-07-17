@@ -11,11 +11,7 @@ import io.reactivex.Observable
  */
 class GetReadingListUseCase : BaseUseCase<ArrayList<Article>>() {
 
-    var getReadingListRequest: GetReadingListRequest
-
-    init {
-        getReadingListRequest = GetReadingListRequest()
-    }
+    var getReadingListRequest: GetReadingListRequest = GetReadingListRequest()
 
     fun setEnName(enName: String) {
         getReadingListRequest.enName = enName

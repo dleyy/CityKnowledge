@@ -1,8 +1,10 @@
 package cityknowledge.cityknowledge.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
+import cityknowledge.cityknowledge.Constants
 import cityknowledge.cityknowledge.R
 import cityknowledge.cityknowledge.adapter.KnowledgeListAdapter
 import cityknowledge.cityknowledge.mvp.contract.HomeContract
@@ -19,7 +21,12 @@ class MainActivity : BaseActivity<HomePresent>(), HomeContract.IHomeView {
         get() = HomePresent(this)
 
     private val recycleAdapter = KnowledgeListAdapter(this
-    ) { it -> Toast.makeText(this, it.enName, Toast.LENGTH_SHORT).show() }
+    ) { it ->
+        val intent = Intent()
+        intent.putExtra(Constants.KEY_ITEM_NAME, it.enName)
+        intent.setClass(this,ItemRankListActivity::class.java)
+        startActivity(intent)
+    }
 
     private fun loadData() {
         recycleAdapter.cleanAllData()

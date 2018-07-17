@@ -20,15 +20,18 @@ class ItemRankPresent(var view: ItemRankContract.ItemRankView)
         model.disposable = object : DefaultDisposable<ArrayList<ItemDetailRank>>() {
             override fun onNext(t: ArrayList<ItemDetailRank>) {
                 view.showDetailList(t)
+                view.disMissLoadingDialog()
             }
 
             override fun onError(e: Throwable) {
                 view.handleError(e)
+                view.disMissLoadingDialog()
             }
         }
     }
 
     fun loadDate(enName: String) {
+        view.showLoadingDialog()
         useCase.setEnName(enName)
         model.useCase = useCase
         model.loadDate()
@@ -36,6 +39,7 @@ class ItemRankPresent(var view: ItemRankContract.ItemRankView)
 
     override fun destroyUseCase() {
         model.destroyUseCase()
+
     }
 
 }

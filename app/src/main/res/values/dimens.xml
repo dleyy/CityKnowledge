@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_list_img_height">60dp</dimen>
+    <dimen name="default_item_padding_vertical">10dp</dimen>
+
+    <dimen name="title_text_size">18sp</dimen>
+
+    <dimen name="recycle_item_padding">8dp</dimen>
+</resources>
