@@ -22,5 +22,14 @@ class WebActivity : AppCompatActivity() {
         simpleWeb = findViewById(R.id.simple_webView)
 
         simpleWeb?.loadUrls(intent.getStringExtra(Constants.KEY_DETAIL_URLS))
+
+    }
+
+    override fun onBackPressed() {
+        if (simpleWeb!!.webView.canGoBack()) {
+            simpleWeb!!.webView.goBack()
+        } else {
+            super.onBackPressed()
+        }
     }
 }

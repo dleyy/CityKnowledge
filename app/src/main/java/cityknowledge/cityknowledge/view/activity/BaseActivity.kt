@@ -22,9 +22,14 @@ abstract class BaseActivity<T:BasePresent> : AppCompatActivity(), IView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        beforeLoad()
         setContentView(inflateLayout())
 
         initDate()
+    }
+
+   open fun beforeLoad(){
+
     }
 
     override fun onDestroy() {

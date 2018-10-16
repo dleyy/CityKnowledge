@@ -25,6 +25,13 @@ class ItemRankListActivity : BaseActivity<ItemRankPresent>(), ItemRankContract.I
         return R.layout.activity_item_rank
     }
 
+    override fun beforeLoad() {
+        if ((intent.flags and Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
+            finish()
+            return
+        }
+    }
+
     override fun initDate() {
         adapter.setOnItemClickListener { position: Int ->
             var intent = Intent()
