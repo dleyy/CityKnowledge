@@ -6,9 +6,7 @@ import android.view.View
 import android.webkit.CookieSyncManager
 import android.webkit.JavascriptInterface
 import com.tencent.smtt.sdk.WebViewClient
-import android.widget.FrameLayout
 import cityknowledge.cityknowledge.R
-import cityknowledge.cityknowledge.R.id.web_content
 import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebSettings
 import com.tencent.smtt.sdk.WebView
@@ -44,6 +42,7 @@ class SimpleWebView(context: Context, attri: AttributeSet?) : WebView(context, a
                     progressBar.progress = p1
                 }
             }
+
         }
 
         webView.webViewClient = object : WebViewClient() {
@@ -52,6 +51,7 @@ class SimpleWebView(context: Context, attri: AttributeSet?) : WebView(context, a
                 WebContent().onGetWenHeight()
             }
         }
+
     }
 
     fun loadUrls(url: String) {
@@ -93,4 +93,5 @@ class SimpleWebView(context: Context, attri: AttributeSet?) : WebView(context, a
             })
         }
     }
+
 }

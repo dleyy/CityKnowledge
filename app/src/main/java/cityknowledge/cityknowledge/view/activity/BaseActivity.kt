@@ -9,11 +9,11 @@ import com.example.domain.Exception.ExceptionHandler
 /**
  * Created by lilei on 2018/7/6.
  */
-abstract class BaseActivity<T:BasePresent> : AppCompatActivity(), IView {
+abstract class BaseActivity<T : BasePresent> : AppCompatActivity(), IView {
 
-    abstract val present:T
+    abstract val present: T
 
-    abstract fun inflateLayout():Int
+    abstract fun inflateLayout(): Int
 
     abstract fun initDate()
 
@@ -28,7 +28,7 @@ abstract class BaseActivity<T:BasePresent> : AppCompatActivity(), IView {
         initDate()
     }
 
-   open fun beforeLoad(){
+    open fun beforeLoad() {
 
     }
 

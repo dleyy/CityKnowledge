@@ -1,8 +1,14 @@
 package cityknowledge.cityknowledge.view.activity
 
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import cityknowledge.cityknowledge.Constants
 import cityknowledge.cityknowledge.R
 import cityknowledge.cityknowledge.widget.SimpleWebView
@@ -20,8 +26,20 @@ class WebActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_activity)
         simpleWeb = findViewById(R.id.simple_webView)
+        val url = intent.getStringExtra(Constants.KEY_DETAIL_URLS)
+        simpleWeb?.loadUrls(url)
 
-        simpleWeb?.loadUrls(intent.getStringExtra(Constants.KEY_DETAIL_URLS))
+        copy.setOnClickListener { _ ->
+            try {
+
+                val manager: ClipboardManager =
+                        getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                manager.text = url
+                Toast.makeText(this, resources.getString(R.string.copy_success), Toast.LENGTH_SHORT).show()
+            } catch (e: Exception) {
+                Toast.makeText(this, resources.getString(R.string.copy_fail), Toast.LENGTH_SHORT).show()
+            }
+        }
 
     }
 

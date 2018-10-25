@@ -39,6 +39,7 @@ dependencies {
     implementation rootProject.ext.dependence["easyRecycleView"]
     implementation rootProject.ext.dependence["dragger2"]
     implementation rootProject.ext.dependence["glide"]
+    implementation rootProject.ext.dependence["designer"]
     annotationProcessor rootProject.ext.dependence["draggerApt"]
     provided rootProject.ext.provider["javaxAnnotation"]
     testImplementation rootProject.ext.dependence["JUnit"]

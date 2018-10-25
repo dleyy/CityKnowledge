@@ -1,25 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context="cityknowledge.cityknowledge.view.activity.MainActivity">
 
-    <com.jude.easyrecyclerview.EasyRecyclerView
-        android:id="@+id/my_recycle"
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
 
-    </com.jude.easyrecyclerview.EasyRecyclerView>
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+        <com.jude.easyrecyclerview.EasyRecyclerView
+            android:id="@+id/my_recycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.jude.easyrecyclerview.EasyRecyclerView>
+
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/leftMenu"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left|start"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical"
+            android:paddingTop="50dp"
+            app:menu="@menu/left_menu" />
+
+    </android.support.v4.widget.DrawerLayout>
+</LinearLayout>

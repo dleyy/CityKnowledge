@@ -2,4 +2,9 @@
     <string name="app_name">CityKnowledge</string>
 
     <string name="load_more">加载更多~</string>
+    <string name="copy_clickBoard">复制url到粘贴板</string>
+    <string name="copy_success">复制成功</string>
+    <string name="copy_fail">复制失败</string>
+
+    <string name="history_loc">历史记录</string>
 </resources>
